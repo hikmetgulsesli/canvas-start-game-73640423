@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play page - Canvas Start Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-emerald-500 selection:text-white">
+  <div data-surface-id="SURF_PLAY_PAGE" data-route="/play" class="flex-1 flex flex-col min-h-screen">
+    <!-- Header / Brand Bar -->
+    <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur px-8 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-sm">
+          C
+        </div>
+        <span class="text-base font-semibold text-slate-100 tracking-wide">Canvas Start Game</span>
+      </div>
+      <div class="flex items-center space-x-2 text-xs font-mono text-slate-400 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700/60">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Route: /play</span>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-5xl w-full mx-auto p-8 flex flex-col gap-6">
+      <!-- Status & High Score Stats Panel -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Game Status Widget -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm">
+          <div class="text-xs font-medium uppercase tracking-wider text-slate-400 mb-2">Game Status</div>
+          <div role="status" aria-label="Game status" class="text-xl font-semibold text-emerald-400 tracking-tight">Game started</div>
+        </div>
+
+        <!-- High Score Widget -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm">
+          <div class="text-xs font-medium uppercase tracking-wider text-slate-400 mb-2">High Score</div>
+          <div role="status" aria-label="High score" value="0" class="text-2xl font-bold font-mono text-slate-100">0</div>
+        </div>
+      </section>
+
+      <!-- Game Arena Canvas Surface -->
+      <section class="flex-1 flex flex-col bg-slate-900/80 border border-slate-800 rounded-2xl p-6 relative overflow-hidden min-h-[460px]">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-4">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+            <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Simulation Viewport</span>
+          </div>
+          <span class="text-xs font-mono text-slate-500">60 FPS &bull; Native Canvas</span>
+        </div>
+
+        <!-- Declared contained surface SURF_GAME_CANVAS -->
+        <div data-surface-id="SURF_GAME_CANVAS" class="flex-1 rounded-xl bg-slate-950 border border-slate-800/80 flex flex-col items-center justify-center relative p-8 shadow-inner overflow-hidden">
+          <!-- Background Grid Simulation -->
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-25"></div>
+
+          <!-- Arena Center Motif -->
+          <div class="relative z-10 flex flex-col items-center text-center max-w-md">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4 text-emerald-400">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+                <polygon points="10,8 16,12 10,16" fill="currentColor"></polygon>
+              </svg>
+            </div>
+            <h2 class="text-lg font-semibold text-slate-200 mb-1">Interactive Simulation Canvas</h2>
+            <p class="text-sm text-slate-400">The game arena is initialized and ready for gameplay session input.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Controls Deck -->
+      <footer class="flex items-center justify-center pt-2 pb-6">
+        <button type="button" data-action="ACT_START_GAME" data-control-slot="CSLOT_START_GAME_START_BUTTON" class="px-8 py-3 bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 text-slate-950 font-semibold rounded-xl shadow-lg shadow-emerald-500/20 transition-all duration-150 flex items-center space-x-2 text-sm tracking-wide">
+          <span>Start</span>
+        </button>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
